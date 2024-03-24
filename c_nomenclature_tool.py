@@ -24,7 +24,7 @@ nucleotidemap = {
 'Stop':['TGA', 'TAG', 'TAA']
 }
 
-if len(sys.argv) != 4:
+if len(sys.argv) != 5:
     sys.exit(1)
 
 cDNASeq = []
@@ -47,7 +47,7 @@ with open(sys.argv[3]) as f: #Load the list of mutant aminoacid you want to chec
         listOfChanges.append(line)
 
 index = 0
-file = open("cDNA nomenclature.txt", "w")
+file = open(sys.argv[4]".txt", "w")
 for codonLocation in listOfCodons:
     arrayOfcNomenclature = []
     analyze = int(codonLocation) * 3 #for example if listOfCodons [1,2,3], then codon location = 1; 1*3 = 4 
