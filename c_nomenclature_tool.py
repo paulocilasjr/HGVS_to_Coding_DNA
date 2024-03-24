@@ -1,3 +1,5 @@
+import sys
+
 nucleotidemap = {
 'G':['GGT','GGC','GGA','GGG'],
 'E':['GAG','GAA'],
@@ -22,21 +24,24 @@ nucleotidemap = {
 'Stop':['TGA', 'TAG', 'TAA']
 }
 
+if len(sys.argv) != 4:
+    sys.exit(1)
+
 cDNASeq = []
-with open('NM_000059.4_200-10456.txt') as f: #Load your FASTA sequence here (Obs: Change 'U' to 'T', if it is the case)
+with open(sys.argv[1]) as f: #Load your FASTA sequence here (Obs: Change 'U' to 'T', if it is the case)
     for line in f:
         line = line.rstrip()
         for letter in line:
             cDNASeq.append(letter)
 
 listOfCodons=[]
-with open('codonstocheck.txt') as f: #Load the list of codons you want to check (Obs: It should be one codon per line)
+with open(sys.argv[2]) as f: #Load the list of codons you want to check (Obs: It should be one codon per line)
     for line in f:
         line = line.rstrip()
         listOfCodons.append(line)
 
 listOfChanges=[]    
-with open('aminoacidchange.txt') as f: #Load the list of mutant aminoacid you want to check (Obs: It should be one mutant aminoacid per line)
+with open(sys.argv[3]) as f: #Load the list of mutant aminoacid you want to check (Obs: It should be one mutant aminoacid per line)
     for line in f:
         line = line.rstrip()
         listOfChanges.append(line)
